@@ -1,0 +1,29 @@
+<!doctype html>
+
+<html>
+    <head>
+        <title>MyData</title>
+
+        <script src='{{ url_for("static", filename="main.js") }}' type="application/javascript"></script>
+    </head>
+
+    <body>
+        <h1>MyData</h1>
+
+        {% if name %}
+            <p>Hello {{ name }}!</p>
+        {% else %}
+            <p>Not logged in.</p>
+        {% endif %}
+
+        {% for key in keys %}
+            <p>{{key}}: {{ keys[key] }}</p>
+        {% endfor %}
+
+        <form action="/add" method="post">
+            <input name="key" type="text" placeholder="key" />
+            <input name="value" type="text" placeholder="value" />
+            <input type="submit" value="Submit" />
+        </form>
+    </body>
+</html>
